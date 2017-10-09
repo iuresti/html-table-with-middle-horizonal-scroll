@@ -1,0 +1,200 @@
+<html>
+<head>
+  <style>
+    div.table {
+
+    }
+
+    div.table .row {
+      display: flex;
+    }
+
+    div.table .row .cell
+    div.table .row .title {
+      text-weight: bold;
+    }
+
+    div.table .row .cell {
+      border: solid 1px;
+      min-width: 6em;
+      width: 6em;
+      height: 1.3em;
+    }
+
+    div.table .row .cell input[type="text"] {
+      border: transparent 0px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .months-bar {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .cell-bar {
+      border: #ffffff solid 1px;
+      min-width: 6em;
+      width: 6em;
+      height: 0px;
+    }
+
+  </style>
+  <script src="jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      var visibleCols = 12;
+
+      $(".months-bar").scroll(function () {
+
+        var start = parseInt(($(this).scrollLeft() / ($("div.table .row .cell").width())));
+        var index, end;
+
+        for (index = 1; index <= start; index++) {
+          $("div.table .row .month-" + index).hide();
+        }
+        end = index + visibleCols - 1;
+        for (; index <= end; index++) {
+          $("div.table .row .month-" + index).show();
+        }
+        for (; index <= 12; index++) {
+          $("div.table .row .month-" + index).hide();
+        }
+      });
+
+      $(window).resize(function () {
+        visibleCols = parseInt(($(window).width() / ($("div.table .row .cell").width()))) - 3;
+
+        //alert(visibleCols);
+
+        $(".help-bar").css("min-width",
+                           "calc(6em * " + (visibleCols + 3) + " + 2px * " + (visibleCols + 2)
+                           + ")");
+        $(".help-bar").css("max-width",
+                           "calc(6em * " + (visibleCols + 3) + " + 2px * " + (visibleCols + 2)
+                           + ")");
+
+        $(".months-bar")
+          .css("width", "calc(6em * " + (visibleCols) + " + 2px * " + (visibleCols - 1) + ")");
+
+        $(".months-bar").scroll();
+      });
+
+      $(window).resize();
+
+    });
+  </script>
+</head>
+<body>
+<p id="anything"></p>
+<div class="table" id="ctrl-1">
+  <div class="row">
+    <div class="cell title">Target</div>
+    <div class="cell title month-1">Mes 1</div>
+    <div class="cell title month-2">Mes 2</div>
+    <div class="cell title month-3">Mes 3</div>
+    <div class="cell title month-4">Mes 4</div>
+    <div class="cell title month-5">Mes 5</div>
+    <div class="cell title month-6">Mes 6</div>
+    <div class="cell title month-7">Mes 7</div>
+    <div class="cell title month-8">Mes 8</div>
+    <div class="cell title month-9">Mes 9</div>
+    <div class="cell title month-10">Mes 10</div>
+    <div class="cell title month-11">Mes 11</div>
+    <div class="cell title month-12">Mes 12</div>
+    <div class="cell title">Year 2</div>
+    <div class="cell title">Year 3</div>
+  </div>
+  <div class="row">
+    <div class="cell"><input type="text"></div>
+    <div class="cell month-1"><input type="text" value="1.0"></div>
+    <div class="cell month-2"><input type="text" value="2.0"></div>
+    <div class="cell month-3"><input type="text" value="3.0"></div>
+    <div class="cell month-4"><input type="text" value="4.0"></div>
+    <div class="cell month-5"><input type="text" value="5.0"></div>
+    <div class="cell month-6"><input type="text" value="6.0"></div>
+    <div class="cell month-7"><input type="text" value="7.0"></div>
+    <div class="cell month-8"><input type="text" value="8.0"></div>
+    <div class="cell month-9"><input type="text" value="9.0"></div>
+    <div class="cell month-10"><input type="text" value="10.0"></div>
+    <div class="cell month-11"><input type="text" value="11.0"></div>
+    <div class="cell month-12"><input type="text" value="12.0"></div>
+    <div class="cell"><input type="text"></div>
+    <div class="cell"><input type="text"></div>
+  </div>
+  <div class="row">
+    <div class="cell"><input type="text"></div>
+    <div class="cell month-1"><input type="text" value="1.0"></div>
+    <div class="cell month-2"><input type="text" value="2.0"></div>
+    <div class="cell month-3"><input type="text" value="3.0"></div>
+    <div class="cell month-4"><input type="text" value="4.0"></div>
+    <div class="cell month-5"><input type="text" value="5.0"></div>
+    <div class="cell month-6"><input type="text" value="6.0"></div>
+    <div class="cell month-7"><input type="text" value="7.0"></div>
+    <div class="cell month-8"><input type="text" value="8.0"></div>
+    <div class="cell month-9"><input type="text" value="9.0"></div>
+    <div class="cell month-10"><input type="text" value="10.0"></div>
+    <div class="cell month-11"><input type="text" value="11.0"></div>
+    <div class="cell month-12"><input type="text" value="12.0"></div>
+    <div class="cell"><input type="text"></div>
+    <div class="cell"><input type="text"></div>
+  </div>
+  <div class="row">
+    <div class="cell"><input type="text"></div>
+    <div class="cell month-1"><input type="text" value="1.0"></div>
+    <div class="cell month-2"><input type="text" value="2.0"></div>
+    <div class="cell month-3"><input type="text" value="3.0"></div>
+    <div class="cell month-4"><input type="text" value="4.0"></div>
+    <div class="cell month-5"><input type="text" value="5.0"></div>
+    <div class="cell month-6"><input type="text" value="6.0"></div>
+    <div class="cell month-7"><input type="text" value="7.0"></div>
+    <div class="cell month-8"><input type="text" value="8.0"></div>
+    <div class="cell month-9"><input type="text" value="9.0"></div>
+    <div class="cell month-10"><input type="text" value="10.0"></div>
+    <div class="cell month-11"><input type="text" value="11.0"></div>
+    <div class="cell month-12"><input type="text" value="12.0"></div>
+    <div class="cell"><input type="text"></div>
+    <div class="cell"><input type="text"></div>
+  </div>
+  <div class="row">
+    <div class="cell"><input type="text"></div>
+    <div class="cell month-1"><input type="text" value="1.0"></div>
+    <div class="cell month-2"><input type="text" value="2.0"></div>
+    <div class="cell month-3"><input type="text" value="3.0"></div>
+    <div class="cell month-4"><input type="text" value="4.0"></div>
+    <div class="cell month-5"><input type="text" value="5.0"></div>
+    <div class="cell month-6"><input type="text" value="6.0"></div>
+    <div class="cell month-7"><input type="text" value="7.0"></div>
+    <div class="cell month-8"><input type="text" value="8.0"></div>
+    <div class="cell month-9"><input type="text" value="9.0"></div>
+    <div class="cell month-10"><input type="text" value="10.0"></div>
+    <div class="cell month-11"><input type="text" value="11.0"></div>
+    <div class="cell month-12"><input type="text" value="12.0"></div>
+    <div class="cell"><input type="text"></div>
+    <div class="cell"><input type="text"></div>
+  </div>
+  <div class="row help-bar">
+    <div class="cell-bar"></div>
+    <div class="months-bar">
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+      <div class="cell-bar"></div>
+    </div>
+    <div class="cell-bar"></div>
+    <div class="cell-bar"></div>
+  </div>
+
+</div>
+</body>
+</html>
